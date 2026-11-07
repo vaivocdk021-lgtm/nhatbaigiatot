@@ -222,6 +222,8 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 .ghi-ch { margin-top: 10px; color: var(--phu); font-size: 13.5px; }
 @media (min-width: 620px) { .ch-nut { max-width: 520px; } }
 #tat-ca { scroll-margin-top: 70px; }
+/* 08/11: nút Zalo đầu trang màu xanh Zalo (bản trước chữ đỏ). Khung QR đã BỎ theo người dùng (sợ trang bị hack đổi QR thành lừa đảo) */
+.lh-zalo { color: var(--zalo); }
 /* nhãn Mới / Cũ ở góc ảnh (chỉ hiện khi dữ liệu nồi có tt) */
 .tt { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 700; line-height: 1.5; }
 .tt-moi { background: var(--do); color: #fff; }
@@ -240,7 +242,7 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
     </a>
     <span class="lh-nhom">
       <a class="lh lh-mes" href="https://m.me/61595821257578" target="_blank" rel="noopener" aria-label="Nhắn Messenger cho trang"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.26.57l.05 1.78c.02.57.6.94 1.12.71l1.99-.88c.17-.07.36-.09.53-.04.91.25 1.89.39 2.91.39 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.75a.6.6 0 00-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.51.16.72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg><span class="so-dt">&nbsp;Messenger</span></a>
-      <a class="lh" href="https://zalo.me/0936830947" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0936830947">Zalo<span class="so-dt">&nbsp;0936830947</span></a>
+      <a class="lh lh-zalo" href="https://zalo.me/0936830947" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0936830947">Zalo<span class="so-dt">&nbsp;0936830947</span></a>
     </span>
   </div>
 </header>
