@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Nồi Nhật Bãi Giá Tốt</title>
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="only light"><style>body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Nồi Nhật Bãi Giá Tốt</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Nồi cơm nội địa Nhật bãi: Tiger, Panasonic, Toshiba, Zojirushi. Xem video thật từng nồi, bảo hành 1 năm, giao hàng toàn quốc.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,7 +9,7 @@
 /* Bố cục: cửa hàng một màu. Thanh đỏ gọn, mở ra là lưới nồi nền trắng; giá đỏ to; mỗi thẻ một nút mua; trang nồi riêng có thanh mua dính đáy.
    Giữ một giao diện sáng: nồi đen tách nền phải đứng trên nền trắng mới rõ. */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --do: #C8102E;
   --do-dam: #A10B23;
   --nen: #F1F2F4;
@@ -199,6 +199,14 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 .chay-gia { margin-top: auto; color: var(--do); font-weight: 800; font-size: 15px; font-variant-numeric: tabular-nums; }
 .chay-gia.hoi { font-size: 13px; }
 @media (min-width: 900px) { .chay li { width: 150px; } .chay-khoi { margin-top: 20px; } }
+/* 08/11: máy tính kéo chuột được + 2 nút mũi tên (bản đầu chuột không kéo được) */
+.chay-khoi { position: relative; }
+.chay.keo-chuot { cursor: grabbing; user-select: none; }
+.chay img { -webkit-user-drag: none; }
+.chay-mui { display: none; position: absolute; top: 50%; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 0; background: #fff; color: var(--do); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); font-size: 24px; font-weight: 700; line-height: 1; cursor: pointer; }
+.chay-mui.trai { left: 6px; }
+.chay-mui.phai { right: 6px; }
+@media (hover: hover) and (pointer: fine) { .chay { cursor: grab; } .chay-mui { display: block; } }
 /* nhãn Mới / Cũ ở góc ảnh (chỉ hiện khi dữ liệu nồi có tt) */
 .tt { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 700; line-height: 1.5; }
 .tt-moi { background: var(--do); color: #fff; }
@@ -231,6 +239,8 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
   <section id="ds" class="w">
     <div class="chay-khoi">
       <div class="chay-dau"><h2>Nồi đang bán</h2><span>Vuốt để xem thêm ›</span></div>
+      <button class="chay-mui trai" id="chay-trai" type="button" aria-label="Xem nồi phía trước">‹</button>
+      <button class="chay-mui phai" id="chay-phai" type="button" aria-label="Xem nồi tiếp theo">›</button>
       <ul class="chay" id="chay" aria-label="Các nồi đang bán, vuốt ngang để xem"></ul>
     </div>
     <div class="dmuc">
@@ -498,15 +508,38 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
       r.appendChild(o);
     });
   });
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var dung = false, hen = 0, x = 0;
   function nghi() { dung = true; clearTimeout(hen); hen = setTimeout(function () { x = r.scrollLeft; dung = false; }, 3000); }
-  ["pointerdown", "touchstart", "wheel", "focusin"].forEach(function (ev) { r.addEventListener(ev, nghi, { passive: true }); });
-  r.addEventListener("mouseenter", function () { dung = true; clearTimeout(hen); });
-  r.addEventListener("mouseleave", function () { x = r.scrollLeft; dung = false; });
+  /* chuột: cầm kéo ngang; kéo quá 5px thì không tính là bấm mở nồi */
+  var keo = null, daKeo = false;
+  r.addEventListener("pointerdown", function (e) {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    keo = { x: e.clientX, s: r.scrollLeft }; daKeo = false;
+  });
+  window.addEventListener("pointermove", function (e) {
+    if (!keo) return;
+    var d = e.clientX - keo.x;
+    if (Math.abs(d) > 5) { daKeo = true; r.classList.add("keo-chuot"); }
+    if (daKeo) { r.scrollLeft = keo.s - d; nghi(); }
+  });
+  window.addEventListener("pointerup", function () { keo = null; r.classList.remove("keo-chuot"); });
+  r.addEventListener("click", function (e) { if (daKeo) { e.preventDefault(); e.stopPropagation(); daKeo = false; } }, true);
+  r.addEventListener("dragstart", function (e) { e.preventDefault(); });
+  /* nút mũi tên: trượt 3 ô */
+  [["chay-trai", -1], ["chay-phai", 1]].forEach(function (n) {
+    var b = document.getElementById(n[0]);
+    if (b) b.addEventListener("click", function () { nghi(); r.scrollBy({ left: n[1] * 3 * 158, behavior: "smooth" }); });
+  });
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var khung = r.parentNode;   // dừng khi chuột ở cả khung (kể cả nút mũi tên), không chỉ hàng
+  ["pointerdown", "touchstart", "wheel", "focusin", "scroll"].forEach(function (ev) { khung.addEventListener(ev, function () { if (ev !== "scroll" || Math.abs(r.scrollLeft - x) > 2) nghi(); }, { passive: true, capture: true }); });
+  khung.addEventListener("mouseenter", function () { dung = true; clearTimeout(hen); });
+  khung.addEventListener("mouseleave", function () { if (!keo) nghi(); });
+  x = r.scrollLeft;
   function buoc() {
     if (!dung && !document.hidden && !document.getElementById("ds").hidden) {
       var nua = r.scrollWidth / 2;
+      if (Math.abs(r.scrollLeft - x) > 2) x = r.scrollLeft;   // người dùng vừa kéo/vuốt/bấm mũi tên: chạy tiếp từ chỗ đó, không kéo ngược
       x += 0.5;
       if (x >= nua) x -= nua;
       r.scrollLeft = x;
