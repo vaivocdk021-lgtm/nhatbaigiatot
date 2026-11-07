@@ -216,14 +216,38 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 .cua-hang .dia-chi { display: flex; gap: 8px; align-items: flex-start; margin-block: 8px 12px; font-size: 15px; line-height: 1.45; }
 .cua-hang .dia-chi svg { width: 22px; height: 22px; flex: none; color: var(--do); margin-top: 1px; }
 .cua-hang small { color: var(--phu); }
-.ch-nut { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ch-nut { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .ch-nut .nut { min-height: 44px; padding-inline: 6px; font-size: 14px; }
 .nut-mes { background: #fff; border: 1.5px solid #0866FF; color: #0866FF; }
 .ghi-ch { margin-top: 10px; color: var(--phu); font-size: 13.5px; }
-@media (min-width: 620px) { .ch-nut { max-width: 520px; } }
+@media (min-width: 620px) { .ch-nut { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 640px; } }
 #tat-ca { scroll-margin-top: 70px; }
 /* 08/11: nút Zalo đầu trang màu xanh Zalo (bản trước chữ đỏ). Khung QR đã BỎ theo người dùng (sợ trang bị hack đổi QR thành lừa đảo) */
 .lh-zalo { color: var(--zalo); }
+/* 08/11 hotline nổi góc dưới trái: gọi chú Hiếu, vòng sáng nhấp nháy */
+.hotline { position: fixed; z-index: 8; left: max(14px, env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; padding: 6px 16px 6px 6px; border-radius: 999px; background: var(--do); color: #fff; font-weight: 800; font-size: 16px; letter-spacing: .02em; box-shadow: 0 4px 16px rgba(200, 16, 46, .45); }
+.hotline .vong { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--do); }
+.hotline .vong::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, .8); animation: nhay 1.4s ease-out infinite; }
+.hotline svg { width: 22px; height: 22px; animation: rung 1.4s ease-in-out infinite; }
+.hotline small { display: block; font-size: 11px; font-weight: 600; opacity: .9; letter-spacing: .04em; }
+@keyframes nhay { 0% { transform: scale(.85); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes rung { 0%, 60%, 100% { transform: rotate(0); } 10%, 30%, 50% { transform: rotate(-14deg); } 20%, 40% { transform: rotate(14deg); } }
+body.co-thanh .hotline { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+/* điện thoại: thu thành nút tròn (bản dài che giá + nút Hỏi mua ô đầu), máy tính giữ dạng dài có số */
+@media (max-width: 619px) { .hotline { padding: 5px; gap: 0; } .hotline > span:last-child { display: none; } .hotline .vong { width: 46px; height: 46px; } }
+.hop-zalo ol { list-style: decimal; }
+@media (min-width: 900px) { body.co-thanh .hotline { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); } }
+@media (prefers-reduced-motion: reduce) { .hotline .vong::after, .hotline svg { animation: none; } }
+.nut-goi { background: var(--do); color: #fff; }
+/* 08/11 hộp tìm Zalo trên máy tính (KHÔNG QR, người dùng chốt): số to + chép số + 3 bước */
+.hop-zalo { border: 0; border-radius: 14px; padding: 22px 22px 18px; max-width: 360px; width: calc(100% - 32px); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+.hop-zalo::backdrop { background: rgba(20, 22, 26, .55); }
+.hop-zalo h2 { font-size: 18px; margin-bottom: 10px; }
+.hop-zalo .so { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; font-size: 24px; font-weight: 800; color: var(--zalo); letter-spacing: .02em; }
+.hop-zalo .so button { font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--zalo); background: #fff; color: var(--zalo); cursor: pointer; }
+.hop-zalo ol { margin: 0 0 12px 20px; padding: 0; color: #3D424C; font-size: 14.5px; line-height: 1.6; }
+.hop-zalo .nut-dong { position: absolute; top: 8px; right: 10px; border: 0; background: none; font-size: 26px; line-height: 1; color: var(--phu); cursor: pointer; }
+.hop-zalo .mo-pc { color: var(--zalo); font-size: 13.5px; font-weight: 600; text-decoration: underline; }
 /* nhãn Mới / Cũ ở góc ảnh (chỉ hiện khi dữ liệu nồi có tt) */
 .tt { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 700; line-height: 1.5; }
 .tt-moi { background: var(--do); color: #fff; }
@@ -286,6 +310,7 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
       <h2 id="t-ch">Xem nồi tận nơi</h2>
       <p class="dia-chi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b>32/33 phố Lam Sơn, phường An Biên, TP Hải Phòng</b></span></p>
       <div class="ch-nut">
+        <a class="nut nut-goi" href="tel:0936830947">Gọi ngay</a>
         <a class="nut nut-chinh" href="https://www.google.com/maps/search/?api=1&amp;query=32%2F33%20Lam%20S%C6%A1n%2C%20An%20Bi%C3%AAn%2C%20H%E1%BA%A3i%20Ph%C3%B2ng" target="_blank" rel="noopener">Chỉ đường</a>
         <a class="nut nut-mes" href="https://m.me/61595821257578" target="_blank" rel="noopener">Messenger</a>
         <a class="nut nut-zalo" href="https://zalo.me/0936830947" target="_blank" rel="noopener">Zalo</a>
@@ -371,6 +396,8 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
     </div>
   </section>
 </main>
+
+<a class="hotline" href="tel:0936830947" aria-label="Gọi hotline 0936 830 947"><span class="vong"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span><span><small>HOTLINE</small>0936 830 947</span></a>
 
 <footer class="chan">
   <div class="w">
@@ -521,6 +548,29 @@ window.addEventListener("popstate", function () {
 });
 
 if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
+
+/* 08/11 Zalo trên máy tính: zalo.me bắt đăng nhập -> hộp số to + chép số + 3 bước tìm (KHÔNG QR, người dùng chốt). Điện thoại mở thẳng Zalo */
+(function () {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches || !window.HTMLDialogElement) return;
+  var d = document.createElement("dialog");
+  d.className = "hop-zalo";
+  d.innerHTML = '<button class="nut-dong" type="button" aria-label="Đóng">×</button><h2>Nhắn Zalo cho bên em</h2>' +
+    '<div class="so">0936 830 947 <button type="button" class="chep">Chép số</button></div>' +
+    '<ol><li>Mở Zalo trên điện thoại hoặc máy tính</li><li>Dán số vào ô <b>Tìm kiếm</b></li><li>Bấm <b>Nhắn tin</b>, không cần kết bạn</li></ol>' +
+    '<a class="mo-pc" href="https://zalo.me/0936830947" target="_blank" rel="noopener">Hoặc mở Zalo trên trình duyệt (cần đăng nhập)</a>';
+  document.body.appendChild(d);
+  d.querySelector(".nut-dong").addEventListener("click", function () { d.close(); });
+  d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+  d.querySelector(".chep").addEventListener("click", function () {
+    var b = this;
+    (navigator.clipboard ? navigator.clipboard.writeText("0936830947") : Promise.reject()).then(function () { b.textContent = "Đã chép"; }, function () { b.textContent = "Chép tay giúp em"; });
+  });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href^="https://zalo.me/"]');
+    if (!a || a.classList.contains("mo-pc")) return;
+    e.preventDefault(); d.showModal();
+  });
+})();
 
 /* hàng nồi chạy ngang: lấy ảnh nhỏ, tên, giá từ thẻ trong lưới; nhân đôi để chạy vòng; chạm/vuốt thì dừng 3 giây */
 (function () {
