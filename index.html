@@ -206,7 +206,8 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 .chay-mui { display: none; position: absolute; top: 50%; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 0; background: #fff; color: var(--do); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); font-size: 24px; font-weight: 700; line-height: 1; cursor: pointer; }
 .chay-mui.trai { left: 6px; }
 .chay-mui.phai { right: 6px; }
-@media (hover: hover) and (pointer: fine) { .chay { cursor: grab; } .chay-mui { display: block; } }
+.goi-y-chuot { display: none; }
+@media (hover: hover) and (pointer: fine) { .chay { cursor: grab; } .chay-mui { display: block; } .goi-y-cham { display: none; } .goi-y-chuot { display: inline; } }
 /* nhãn Mới / Cũ ở góc ảnh (chỉ hiện khi dữ liệu nồi có tt) */
 .tt { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 700; line-height: 1.5; }
 .tt-moi { background: var(--do); color: #fff; }
@@ -238,7 +239,7 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 <main id="dau">
   <section id="ds" class="w">
     <div class="chay-khoi">
-      <div class="chay-dau"><h2>Nồi đang bán</h2><span>Vuốt để xem thêm ›</span></div>
+      <div class="chay-dau"><h2>Nồi đang bán</h2><span class="goi-y-cham">Vuốt để xem thêm ›</span><span class="goi-y-chuot">Kéo để xem thêm ›</span></div>
       <button class="chay-mui trai" id="chay-trai" type="button" aria-label="Xem nồi phía trước">‹</button>
       <button class="chay-mui phai" id="chay-phai" type="button" aria-label="Xem nồi tiếp theo">›</button>
       <ul class="chay" id="chay" aria-label="Các nồi đang bán, vuốt ngang để xem"></ul>
@@ -509,7 +510,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
     });
   });
   var dung = false, hen = 0, x = 0;
-  function nghi() { dung = true; clearTimeout(hen); hen = setTimeout(function () { x = r.scrollLeft; dung = false; }, 3000); }
+  function nghi() { dung = true; clearTimeout(hen); hen = setTimeout(function () { x = r.scrollLeft; dung = false; }, 1000); }   // 08/11 người dùng: dừng 1 giây rồi chạy tiếp
   /* chuột: cầm kéo ngang; kéo quá 5px thì không tính là bấm mở nồi */
   var keo = null, daKeo = false;
   r.addEventListener("pointerdown", function (e) {
