@@ -567,7 +567,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   var khung = r.parentNode;   // dừng khi chuột ở cả khung (kể cả nút mũi tên), không chỉ hàng
   ["pointerdown", "touchstart", "wheel", "focusin", "scroll"].forEach(function (ev) { khung.addEventListener(ev, function () { if (ev !== "scroll" || Math.abs(r.scrollLeft - x) > 2) nghi(); }, { passive: true, capture: true }); });
   khung.addEventListener("mouseenter", function () { dung = true; clearTimeout(hen); });
-  khung.addEventListener("mouseleave", function () { if (!keo) nghi(); });
+  khung.addEventListener("mouseleave", function () { if (!keo) { clearTimeout(hen); x = r.scrollLeft; dung = false; } });   // 08/11 người dùng: bỏ chuột ra là chạy ngay
   x = r.scrollLeft;
   function buoc() {
     if (!dung && !document.hidden && !document.getElementById("ds").hidden) {
