@@ -1,0 +1,448 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Nồi Nhật Bãi Giá Tốt</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Nồi cơm nội địa Nhật bãi: Tiger, Panasonic, Toshiba, Zojirushi. Xem video thật từng nồi, bảo hành 1 năm, giao hàng toàn quốc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&text=%E7%82%8A%E9%A3%AF%E4%BF%9D%E6%B8%A9%E4%BA%88%E7%B4%84%E5%8F%96%E6%B6%88%E5%88%87%E5%86%8D%E5%8A%A0%E7%86%B1%E7%99%BD%E7%B1%B3%E7%8E%84%E3%81%8A%E3%81%8B%E3%82%86%E6%97%A9%E3%81%8D&display=swap">
+<style>
+/* Bố cục: cửa hàng một màu. Thanh đỏ gọn, mở ra là lưới nồi nền trắng; giá đỏ to; mỗi thẻ một nút mua; trang nồi riêng có thanh mua dính đáy.
+   Giữ một giao diện sáng: nồi đen tách nền phải đứng trên nền trắng mới rõ. */
+:root {
+  color-scheme: light;
+  --do: #C8102E;
+  --do-dam: #A10B23;
+  --nen: #F1F2F4;
+  --the: #FFFFFF;
+  --chu: #16181C;
+  --phu: #5B616C;
+  --vach: #E2E4E9;
+  --chip: #F1F2F4;
+  --zalo: #0068FF;
+  --cchu: "Be Vietnam Pro", "Segoe UI", Roboto, Arial, sans-serif;
+  --cnhat: "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  --goc: 12px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--nen); color: var(--chu); font: 400 15px/1.5 var(--cchu); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--do); }
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+h1, h2, h3 { font-weight: 700; line-height: 1.2; text-wrap: balance; }
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--zalo); outline-offset: 2px; }
+.w { max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.an { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+.dau { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--do); color: #fff; }
+.dau .w { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; }
+.hieu { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; letter-spacing: -.01em; line-height: 1.1; }
+.hieu svg { flex: none; width: 30px; height: 30px; }
+.lh { display: inline-flex; align-items: center; min-height: 38px; padding: 7px 13px; border-radius: 999px; background: #fff; color: var(--do); font-weight: 700; font-size: 14px; white-space: nowrap; }
+
+.cam { background: var(--the); border-bottom: 1px solid var(--vach); }
+.so-dt { display: none; }
+.cam ul { display: flex; gap: 6px 10px; justify-content: space-between; overflow-x: auto; scrollbar-width: none; padding-block: 8px; font-size: 12.5px; font-weight: 600; }
+.cam ul::-webkit-scrollbar { display: none; }
+.cam li { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.cam svg { width: 15px; height: 15px; flex: none; color: var(--do); }
+
+.dmuc { display: grid; gap: 10px; padding-block: 16px 12px; }
+.dmuc-tren { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.dmuc h1 { font-size: 21px; letter-spacing: -.01em; }
+.dem { color: var(--phu); font-size: 14px; white-space: nowrap; }
+.loc-hang { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; padding-block: 2px; }
+.loc-hang::-webkit-scrollbar { display: none; }
+.loc { flex: none; min-height: 40px; padding: 7px 15px; border-radius: 999px; border: 1px solid var(--vach); background: var(--the); font-weight: 600; font-size: 14px; }
+.loc[aria-pressed="true"] { background: #FDECEF; color: var(--do); border-color: var(--do); }
+.ngan { flex: none; width: 1px; margin-block: 8px; background: var(--vach); }
+
+.luoi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.o { display: flex; flex-direction: column; background: var(--the); border: 1px solid var(--vach); border-radius: var(--goc); overflow: hidden; transition: box-shadow .16s ease, border-color .16s ease; }
+.o:hover { border-color: #C9CDD4; box-shadow: 0 6px 18px rgba(22, 24, 28, .09); }
+.the { flex: 1; display: flex; flex-direction: column; }
+.khung-anh { position: relative; background: #fff; aspect-ratio: 1; }
+.khung-anh img { width: 100%; height: 100%; object-fit: contain; }
+.nd { flex: 1; display: flex; flex-direction: column; gap: 5px; padding: 8px 12px 10px; }
+.hang { color: var(--phu); font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.nd h3 { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chips span { padding: 2px 7px; border-radius: 5px; background: var(--chip); color: #3D424C; font-size: 12px; line-height: 1.4; }
+.chips .nau { display: none; background: #FDECEF; color: var(--do-dam); font-weight: 600; }
+.gia { margin-top: auto; padding-top: 5px; color: var(--do); font-weight: 800; font-size: 19px; line-height: 1.2; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.gia.hoi { font-size: 15px; font-weight: 700; }
+.mua { display: flex; align-items: center; justify-content: center; min-height: 42px; margin: 0 12px 12px; border-radius: 8px; border: 1.5px solid var(--do); color: var(--do); font-weight: 700; font-size: 14px; }
+.mua:hover { background: var(--do); color: #fff; }
+.rong { padding: 18px; background: var(--the); border-radius: var(--goc); }
+
+.khoi { display: grid; gap: 14px; margin-top: 28px; padding: 20px 16px; background: var(--the); border: 1px solid var(--vach); border-radius: var(--goc); }
+.khoi h2 { font-size: 19px; }
+.buoc { display: grid; gap: 12px; counter-reset: b; }
+.buoc li { counter-increment: b; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.buoc li::before { content: counter(b); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--do); color: #fff; font-weight: 700; font-size: 14px; }
+.buoc span { padding-top: 4px; }
+details { border-top: 1px solid var(--vach); }
+details:first-of-type { border-top: 0; }
+summary { cursor: pointer; padding-block: 13px; font-weight: 600; line-height: 1.35; }
+details > :not(summary) { padding-bottom: 14px; color: var(--phu); max-width: 68ch; }
+.nut-nhat { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: none; }
+.phim { display: grid; gap: 1px; padding: 9px 11px; background: var(--chip); border-radius: 8px; color: var(--chu); }
+.phim b { font: 500 21px/1.2 var(--cnhat); }
+.phim span { font-size: 13px; color: var(--phu); line-height: 1.3; }
+.bang { max-width: none; display: grid; gap: 16px; }
+.bang h3 { font-size: 15px; color: var(--chu); margin-bottom: 4px; }
+.bang table { width: 100%; border-collapse: collapse; }
+.bang th, .bang td { padding: 7px 0; border-bottom: 1px solid var(--vach); text-align: left; font-weight: 400; font-size: 14px; line-height: 1.35; }
+.bang td { text-align: right; font-weight: 700; color: var(--do); white-space: nowrap; padding-left: 12px; font-variant-numeric: tabular-nums; }
+
+.chan { margin-top: 28px; background: #1B1D21; color: #C7CBD2; font-size: 14px; padding-block: 22px; }
+.chan .w { display: grid; gap: 6px; }
+.chan b { color: #fff; font-size: 16px; }
+.chan a { text-decoration: underline; text-underline-offset: 2px; }
+.ghi { margin-top: 8px; font-size: 12.5px; color: #969BA5; }
+
+.ve { display: inline-flex; align-items: center; gap: 4px; min-height: 42px; color: var(--phu); font-weight: 600; font-size: 14px; }
+.sp { display: grid; gap: 12px; padding-bottom: 8px; }
+.sp-anh, .sp-tin { background: var(--the); border: 1px solid var(--vach); border-radius: var(--goc); }
+.sp-anh { padding: 10px; display: grid; gap: 8px; min-width: 0; }
+.khung { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: #fff; }
+.khung img { width: 100%; height: 100%; object-fit: contain; }
+.khung video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+.bi { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.bi button { position: relative; padding: 0; aspect-ratio: 1; border: 1.5px solid var(--vach); border-radius: 7px; background: #fff; overflow: hidden; }
+.bi button[aria-current="true"] { border-color: var(--do); box-shadow: 0 0 0 1px var(--do); }
+.bi img { width: 100%; height: 100%; object-fit: cover; }
+.bi .choi::after { content: ""; position: absolute; inset: 0; margin: auto; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.58) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 7v10l8-5z'/%3E%3C/svg%3E") center/20px no-repeat; }
+.chu-anh { font-size: 13px; color: var(--phu); line-height: 1.4; }
+.sp-tin { display: grid; gap: 12px; padding: 16px; align-content: start; min-width: 0; }
+.sp-tin h1 { font-size: 22px; letter-spacing: -.01em; }
+.gia-to { color: var(--do); font-weight: 800; font-size: 29px; line-height: 1.15; letter-spacing: -.015em; font-variant-numeric: tabular-nums; }
+.gia-to.hoi { font-size: 20px; }
+.yen { display: grid; gap: 7px; padding: 11px 12px; background: #FDF1F3; border-radius: 8px; font-size: 14px; font-weight: 500; }
+.yen li { display: flex; gap: 8px; align-items: center; }
+.yen svg { width: 17px; height: 17px; color: var(--do); flex: none; }
+.so div { display: grid; grid-template-columns: 104px 1fr; gap: 10px; padding-block: 8px; border-bottom: 1px solid var(--vach); font-size: 14px; line-height: 1.4; }
+.so div:last-child { border-bottom: 0; }
+.so dt { color: var(--phu); }
+.that b { display: block; font-size: 14px; margin-bottom: 2px; }
+.that { font-size: 14px; color: #3D424C; }
+.tin-nut { display: none; gap: 8px; }
+.lien { color: var(--zalo); font-weight: 600; font-size: 14px; }
+.lien-noi { margin-top: 12px; display: grid; gap: 10px; }
+.lien-noi h2 { font-size: 17px; }
+.keo { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(166px, 46%); gap: 10px; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; padding-bottom: 4px; }
+.keo::-webkit-scrollbar { display: none; }
+
+.nut { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 16px; line-height: 1.2; text-align: center; border: 1.5px solid transparent; }
+.nut-chinh { background: var(--do); color: #fff; }
+.nut-chinh:hover { background: var(--do-dam); }
+.nut-zalo { background: #fff; border-color: var(--zalo); color: var(--zalo); }
+.thanh { position: fixed; z-index: 7; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--the); box-shadow: 0 -2px 14px rgba(22, 24, 28, .12); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.thanh .nut { min-height: 48px; }
+.thanh .nut-zalo { padding-inline: 18px; }
+body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
+
+@media (min-width: 620px) {
+  .so-dt { display: inline; }
+  .chips .nau { display: inline; }
+  .cam ul { font-size: 13px; }
+  .luoi { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .keo { grid-auto-columns: 200px; }
+  .nut-nhat { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .bang { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (min-width: 900px) {
+  .hieu { font-size: 20px; }
+  .dmuc { gap: 12px; padding-block: 20px 16px; }
+  .dmuc-tren { justify-content: flex-start; }
+  .loc-hang { margin-inline: 0; padding-inline: 0; flex-wrap: wrap; overflow: visible; }
+  .luoi { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .nd h3 { font-size: 16px; }
+  .gia { font-size: 21px; }
+  .khoi { padding: 24px; }
+  .buoc { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .sp { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .sp-tin { padding: 22px; position: sticky; top: 74px; }
+  .sp-tin h1 { font-size: 26px; }
+  .gia-to { font-size: 34px; }
+  .tin-nut { display: grid; grid-template-columns: 1fr auto; }
+  .thanh { display: none; }
+  body.co-thanh { padding-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .o { transition: none; }
+}
+</style>
+
+<header class="dau">
+  <div class="w">
+    <a class="hieu" href="#" id="ve-dau">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="11" width="26" height="17" rx="6" fill="#fff"/><path d="M6 11c0-4 4-6.5 10-6.5S26 7 26 11z" fill="#fff"/><rect x="3" y="10.4" width="26" height="1.8" fill="#C8102E"/><circle cx="16" cy="19.5" r="3.4" fill="#C8102E"/></svg>
+      <span>Nồi Nhật Bãi Giá Tốt</span>
+    </a>
+    <a class="lh" href="https://zalo.me/0936830947" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0936830947">Zalo<span class="so-dt">&nbsp;0936830947</span></a>
+  </div>
+</header>
+
+<div class="cam">
+  <ul class="w">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.500-1-8-4-8-9V6z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></svg>Bảo hành 1 năm</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M2 7h12v10H2zM14 11h4l4 3v3h-8z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>Giao toàn quốc</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg>Video từng nồi</li>
+  </ul>
+</div>
+
+<main id="dau">
+  <section id="ds" class="w">
+    <div class="dmuc">
+      <div class="dmuc-tren">
+        <h1>Nồi cơm Nhật bãi</h1>
+        <p class="dem" id="dem" aria-live="polite">11 nồi</p>
+      </div>
+      <div class="loc-hang" role="group" aria-label="Lọc nồi">
+        <button class="loc" id="l-all" data-k="" data-v="" aria-pressed="true">Tất cả</button>
+        <button class="loc" id="l-1l" data-k="c" data-v="1L" aria-pressed="false">1 lít (1–3 người)</button>
+        <button class="loc" id="l-18" data-k="c" data-v="1L8" aria-pressed="false">1,8 lít (4–6 người)</button>
+        <span class="ngan" aria-hidden="true"></span>
+        <button class="loc" id="l-to" data-k="h" data-v="Toshiba" aria-pressed="false">Toshiba</button>
+        <button class="loc" id="l-pa" data-k="h" data-v="Panasonic" aria-pressed="false">Panasonic</button>
+        <button class="loc" id="l-ti" data-k="h" data-v="Tiger" aria-pressed="false">Tiger</button>
+        <button class="loc" id="l-zo" data-k="h" data-v="Zojirushi" aria-pressed="false">Zojirushi</button>
+      </div>
+    </div>
+    <ul class="luoi" id="luoi"><li class="o" data-id="noi_22" data-c="1L" data-h="Toshiba"><a class="the" href="#noi_22" data-id="noi_22"><div class="khung-anh"><img src="noi_22_nho.webp" alt="Nồi cơm Toshiba RC-10VST" width="440" height="440" loading="eager" decoding="async"></div><div class="nd"><p class="hang">Toshiba</p><h3>Toshiba RC-10VST</h3><div class="chips"><span>1 lít</span><span>Cảm ứng, đời 2020</span><span class="nau">Có cảnh nấu cơm</span></div><p class="gia">2.000.000đ</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Toshiba%20RC-10VST%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_03" data-c="1L" data-h="Tiger"><a class="the" href="#noi_03" data-id="noi_03"><div class="khung-anh"><img src="noi_03_nho.webp" alt="Nồi cơm Tiger bản VIP" width="440" height="440" loading="eager" decoding="async"></div><div class="nd"><p class="hang">Tiger</p><h3>Tiger bản VIP</h3><div class="chips"><span>1 lít</span><span>Lòng nồi gốm</span><span class="nau">Có cảnh nấu cơm</span></div><p class="gia">4.000.000đ</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Tiger%20b%E1%BA%A3n%20VIP%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_02" data-c="1L8" data-h="Panasonic"><a class="the" href="#noi_02" data-id="noi_02"><div class="khung-anh"><img src="noi_02_nho.webp" alt="Nồi cơm Panasonic SR-VSX189" width="440" height="440" loading="eager" decoding="async"></div><div class="nd"><p class="hang">Panasonic</p><h3>Panasonic SR-VSX189</h3><div class="chips"><span>1,8 lít</span><span>Mặt cảm ứng</span></div><p class="gia">4.300.000đ</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Panasonic%20SR-VSX189%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_14" data-c="1L" data-h="Toshiba"><a class="the" href="#noi_14" data-id="noi_14"><div class="khung-anh"><img src="noi_14_nho.webp" alt="Nồi cơm Toshiba tô chuông đỏ" width="440" height="440" loading="eager" decoding="async"></div><div class="nd"><p class="hang">Toshiba</p><h3>Toshiba tô chuông đỏ</h3><div class="chips"><span>1 lít</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Toshiba%20t%C3%B4%20chu%C3%B4ng%20%C4%91%E1%BB%8F%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_15" data-c="1L8" data-h="Toshiba"><a class="the" href="#noi_15" data-id="noi_15"><div class="khung-anh"><img src="noi_15_nho.webp" alt="Nồi cơm Toshiba nồi tô đỏ" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Toshiba</p><h3>Toshiba nồi tô đỏ</h3><div class="chips"><span>1,8 lít</span><span>Cỡ lớn</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Toshiba%20n%E1%BB%93i%20t%C3%B4%20%C4%91%E1%BB%8F%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_17" data-c="1L" data-h="Tiger"><a class="the" href="#noi_17" data-id="noi_17"><div class="khung-anh"><img src="noi_17_nho.webp" alt="Nồi cơm Tiger bản 220V" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Tiger</p><h3>Tiger bản 220V</h3><div class="chips"><span>1 lít</span><span>Cắm thẳng 220V</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Tiger%20b%E1%BA%A3n%20220V%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_18" data-c="1L" data-h="Zojirushi"><a class="the" href="#noi_18" data-id="noi_18"><div class="khung-anh"><img src="noi_18_nho.webp" alt="Nồi cơm Zojirushi nồi voi" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Zojirushi</p><h3>Zojirushi nồi voi</h3><div class="chips"><span>1 lít</span><span>Nhỏ gọn</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Zojirushi%20n%E1%BB%93i%20voi%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_16" data-c="1L" data-h="Toshiba"><a class="the" href="#noi_16" data-id="noi_16"><div class="khung-anh"><img src="noi_16_nho.webp" alt="Nồi cơm Toshiba tô chuông" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Toshiba</p><h3>Toshiba tô chuông</h3><div class="chips"><span>1 lít</span><span>Hợp 2 vợ chồng</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Toshiba%20t%C3%B4%20chu%C3%B4ng%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_19" data-c="1L8" data-h="Toshiba"><a class="the" href="#noi_19" data-id="noi_19"><div class="khung-anh"><img src="noi_19_nho.webp" alt="Nồi cơm Toshiba hút chân không" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Toshiba</p><h3>Toshiba hút chân không</h3><div class="chips"><span>1,8 lít</span><span>Xoong 2 chấm nhỏ</span><span class="nau">Có cảnh nấu cơm</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Toshiba%20h%C3%BAt%20ch%C3%A2n%20kh%C3%B4ng%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_21" data-c="" data-h="Zojirushi"><a class="the" href="#noi_21" data-id="noi_21"><div class="khung-anh"><img src="noi_21_nho.webp" alt="Nồi cơm Zojirushi áp suất cao tần" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Zojirushi</p><h3>Zojirushi áp suất cao tần</h3><div class="chips"><span>Hỏi dung tích</span><span>Lòng nồi bóng đẹp</span><span class="nau">Có cảnh nấu cơm</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Zojirushi%20%C3%A1p%20su%E1%BA%A5t%20cao%20t%E1%BA%A7n%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o" data-id="noi_20" data-c="1L8" data-h="Panasonic"><a class="the" href="#noi_20" data-id="noi_20"><div class="khung-anh"><img src="noi_20_nho.webp" alt="Nồi cơm Panasonic mặt cảm ứng" width="440" height="440" loading="lazy" decoding="async"></div><div class="nd"><p class="hang">Panasonic</p><h3>Panasonic mặt cảm ứng</h3><div class="chips"><span>1,8 lít</span><span>Xoong 1 chấm nhỏ</span><span class="nau">Có cảnh nấu cơm</span></div><p class="gia hoi">Nhắn báo giá</p></div></a><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20n%E1%BB%93i%20Panasonic%20m%E1%BA%B7t%20c%E1%BA%A3m%20%E1%BB%A9ng%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li></ul>
+    <p class="rong" id="rong" hidden>Chưa có mẫu này. Anh chị nhắn bên em để hỏi mẫu khác nhé.</p>
+
+    <section class="khoi" aria-labelledby="t-dat">
+      <h2 id="t-dat">Đặt nồi trong 3 bước</h2>
+      <ol class="buoc">
+        <li><span>Nhắn bên em mẫu nồi, tên, số điện thoại và địa chỉ.</span></li>
+        <li><span>Bên em kiểm còn hàng và báo phí ship.</span></li>
+        <li><span>Anh chị đồng ý, bên em xác nhận đơn và giao tới nhà.</span></li>
+      </ol>
+    </section>
+
+    <section class="khoi" aria-labelledby="t-hoi">
+      <h2 id="t-hoi">Câu hỏi hay gặp</h2>
+      <div>
+        <details><summary>Nhà tôi nên lấy nồi cỡ nào?</summary><p>Nhà 1–3 người dùng nồi 1 lít, nấu tối đa 5,5 cốc gạo. Nhà 4–6 người nên lấy 1,8 lít, nấu được 10 cốc.</p></details>
+        <details><summary>Nồi Nhật có cắm thẳng điện nhà mình được không?</summary><p>Nồi nội địa Nhật thường dùng điện 100V nên cần cục đổi nguồn. Chiếc Tiger 1 lít bản 220V cắm thẳng điện nhà mình. Anh chị nhắn bên em để hỏi đúng chiếc mình chọn.</p></details>
+        <details><summary>Bảo hành thế nào?</summary><p>Mỗi nồi bảo hành 1 năm.</p></details>
+        <details><summary>Giao hàng và thanh toán ra sao?</summary><p>Bên em giao hàng toàn quốc. Anh chị nhắn Zalo 0936830947 để được tư vấn cách giao và thanh toán.</p></details>
+        <details><summary>Nút tiếng Nhật trên nồi đọc thế nào?</summary>
+          <div class="nut-nhat">
+            <div class="phim"><b lang="ja">炊飯</b><span>Nấu cơm</span></div>
+            <div class="phim"><b lang="ja">保温</b><span>Giữ ấm</span></div>
+            <div class="phim"><b lang="ja">切</b><span>Tắt</span></div>
+            <div class="phim"><b lang="ja">取消</b><span>Hủy lệnh</span></div>
+            <div class="phim"><b lang="ja">予約</b><span>Hẹn giờ</span></div>
+            <div class="phim"><b lang="ja">再加熱</b><span>Hâm nóng lại</span></div>
+            <div class="phim"><b lang="ja">早炊き</b><span>Nấu nhanh</span></div>
+            <div class="phim"><b lang="ja">白米</b><span>Gạo trắng</span></div>
+            <div class="phim"><b lang="ja">玄米</b><span>Gạo lứt</span></div>
+            <div class="phim"><b lang="ja">おかゆ</b><span>Nấu cháo</span></div>
+          </div>
+        </details>
+        <details><summary>Giá tham khảo các mẫu khác</summary>
+          <div class="bang">
+            <div><h3>Nồi 1 lít</h3><table><tbody><tr><th scope="row">Toshiba hút chân không</th><td>1.500.000đ</td></tr><tr><th scope="row">Zojirushi voi gù</th><td>2.000.000đ</td></tr><tr><th scope="row">Zojirushi voi gù (đẹp)</th><td>2.300.000đ</td></tr><tr><th scope="row">Toshiba cảm ứng đời 2020</th><td>2.000.000đ</td></tr><tr><th scope="row">Toshiba vuông đời 2019</th><td>2.000.000đ</td></tr><tr><th scope="row">Toshiba đời 2017</th><td>2.500.000đ</td></tr><tr><th scope="row">Zojirushi voi</th><td>3.000.000đ</td></tr><tr><th scope="row">Toshiba tô chuông mặt cảm ứng</th><td>3.500.000đ</td></tr><tr><th scope="row">Tiger VIP lòng gốm</th><td>4.000.000đ</td></tr></tbody></table></div>
+            <div><h3>Nồi 1,8 lít</h3><table><tbody><tr><th scope="row">Toshiba tô bầu, xoong có chấm nhẹ</th><td>1.800.000đ</td></tr><tr><th scope="row">Tiger đời 2023</th><td>3.500.000đ</td></tr><tr><th scope="row">Toshiba tô chuông, xoong có chấm nhẹ</th><td>3.600.000đ</td></tr><tr><th scope="row">Panasonic mặt cảm ứng</th><td>4.300.000đ</td></tr><tr><th scope="row">Panasonic xoong đẹp</th><td>5.000.000đ</td></tr><tr><th scope="row">Toshiba 1 lít 8 mới</th><td>5.000.000đ</td></tr></tbody></table></div>
+          </div>
+        </details>
+        <details><summary>Có bán riêng lòng nồi không?</summary><p>Bên em chỉ bán nguyên nồi thôi ạ.</p></details>
+      </div>
+    </section>
+  </section>
+
+  <section id="ct" class="w" hidden>
+    <a class="ve" href="#" id="ve-ds">‹ Xem tất cả nồi</a>
+    <div class="sp">
+      <div class="sp-anh">
+        <div class="khung" id="khung"></div>
+        <div class="bi" id="bi"></div>
+        <p class="chu-anh">Ảnh và clip lấy từ video thật của chính chiếc nồi này.</p>
+      </div>
+      <div class="sp-tin">
+        <div>
+          <p class="hang" id="sp-hang"></p>
+          <h1 id="sp-ten"></h1>
+        </div>
+        <div id="sp-gia"></div>
+        <ul class="yen">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.500-1-8-4-8-9V6z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></svg>Bảo hành 1 năm</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M2 7h12v10H2zM14 11h4l4 3v3h-8z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>Giao toàn quốc, phí ship báo khi kiểm hàng</li>
+        </ul>
+        <div class="tin-nut">
+          <a class="nut nut-chinh" id="sp-mes" target="_blank" rel="noopener">Nhắn hỏi mua chiếc này</a>
+          <a class="nut nut-zalo" href="https://zalo.me/0936830947" target="_blank" rel="noopener">Zalo</a>
+        </div>
+        <dl class="so" id="sp-so"></dl>
+        <div class="that"><b id="sp-tinh-ten"></b><span id="sp-tinh"></span></div>
+        <a class="lien" id="sp-reel" target="_blank" rel="noopener">Xem video đầy đủ trên Facebook ›</a>
+      </div>
+    </div>
+    <section class="lien-noi" aria-labelledby="t-lien">
+      <h2 id="t-lien">Nồi cùng cỡ</h2>
+      <ul class="keo" id="keo"></ul>
+    </section>
+    <div class="thanh" id="thanh" hidden>
+      <a class="nut nut-zalo" href="https://zalo.me/0936830947" target="_blank" rel="noopener">Zalo</a>
+      <a class="nut nut-chinh" id="thanh-mes" target="_blank" rel="noopener">Nhắn hỏi mua</a>
+    </div>
+  </section>
+</main>
+
+<footer class="chan">
+  <div class="w">
+    <b>Nồi Nhật Bãi Giá Tốt</b>
+    <span>Zalo 0936830947</span>
+    <span><a href="https://www.facebook.com/profile.php?id=61595821257578" target="_blank" rel="noopener">Trang Facebook</a> · <a href="https://www.instagram.com/noinhatbaigiatot/" target="_blank" rel="noopener">Instagram</a></span>
+    <p class="ghi">Bản xem thử. Giá lấy từ bài đăng và video, chưa kiểm lại còn hàng.</p>
+  </div>
+</footer>
+
+<script>
+var NOI = [{"id": "noi_22", "hang": "Toshiba", "ten": "Toshiba RC-10VST", "co": "1L", "ma": "RC-10VST", "doi": "2020", "gia": 2000000, "reel": null, "nhan": ["Mặt nồi", "Cơm nấu thử", "Xới cơm"], "diem": "Mặt cảm ứng, có chữ IH trên nắp", "tinh": "Video có cảnh bấm nấu cơm thật, mở nắp nghi ngút hơi, xới lên cơm tơi.", "phu": "Cảm ứng, đời 2020"}, {"id": "noi_03", "hang": "Tiger", "ten": "Tiger bản VIP", "co": "1L", "ma": null, "doi": null, "gia": 4000000, "reel": "954199894037200", "nhan": ["Mặt nồi", "Lòng nồi", "Cơm nấu thử"], "diem": "Lòng nồi gốm", "tinh": "Video có cảnh bấm nấu và xới cơm.", "phu": "Lòng nồi gốm"}, {"id": "noi_02", "hang": "Panasonic", "ten": "Panasonic SR-VSX189", "co": "1L8", "ma": "SR-VSX189", "doi": null, "gia": 4300000, "reel": "1115394791192521", "nhan": ["Mặt nồi", "Xoong", "Lòng nồi"], "diem": "Mặt cảm ứng", "tinh": "Video có cảnh xem mặt nồi, nhấc xoong ra xem cận.", "phu": "Mặt cảm ứng"}, {"id": "noi_14", "hang": "Toshiba", "ten": "Toshiba tô chuông đỏ", "co": "1L", "ma": null, "doi": null, "gia": null, "reel": "1629848502168133", "nhan": ["Mặt nồi", "Xoong", "Lòng nồi"], "diem": "Giá mềm trong các mẫu bên em", "tinh": "Video có cảnh nhấc xoong ra xem cận.", "phu": null}, {"id": "noi_15", "hang": "Toshiba", "ten": "Toshiba nồi tô đỏ", "co": "1L8", "ma": null, "doi": null, "gia": null, "reel": "1145403024592081", "nhan": ["Mặt nồi", "Lòng nồi", "Thân nồi"], "diem": "Nồi tô cỡ lớn cho nhà đông người", "tinh": "Video có cảnh xem nắp trong và lòng nồi.", "phu": "Cỡ lớn"}, {"id": "noi_17", "hang": "Tiger", "ten": "Tiger bản 220V", "co": "1L", "ma": null, "doi": null, "gia": null, "reel": "3688407247988696", "nhan": ["Mặt nồi", "Tem điện áp", "Nắp trong"], "diem": "Cắm thẳng điện nhà mình, không cần đổi nguồn", "tinh": "Video có cảnh xem tem máy và nắp trong.", "phu": "Cắm thẳng 220V"}, {"id": "noi_18", "hang": "Zojirushi", "ten": "Zojirushi nồi voi", "co": "1L", "ma": null, "doi": null, "gia": null, "reel": "2471130760080747", "nhan": ["Mặt nồi", "Lòng nồi", "Bảng nút"], "diem": "Nhỏ gọn cho nhà ít người", "tinh": "Video có cảnh xem mặt nồi và lòng nồi.", "phu": "Nhỏ gọn"}, {"id": "noi_16", "hang": "Toshiba", "ten": "Toshiba tô chuông", "co": "1L", "ma": null, "doi": null, "gia": null, "reel": "30290423167213044", "nhan": ["Mặt nồi", "Lòng nồi", "Nắp trong"], "diem": "Để trên bàn ăn cũng đẹp", "tinh": "Video có cảnh mở nắp, xem lòng nồi và nắp trong.", "phu": "Hợp 2 vợ chồng"}, {"id": "noi_19", "hang": "Toshiba", "ten": "Toshiba hút chân không", "co": "1L8", "ma": null, "doi": null, "gia": null, "reel": "1912687426774796", "nhan": ["Mặt nồi", "Lòng nồi", "Cơm nấu thử"], "diem": "Áp suất cao tần, hâm nóng lại cơm 9 phút", "tinh": "Vỏ ngoài còn đẹp. Xoong có 2 vết chấm nhỏ.", "phu": "Xoong 2 chấm nhỏ"}, {"id": "noi_21", "hang": "Zojirushi", "ten": "Zojirushi áp suất cao tần", "co": null, "ma": null, "doi": "2019", "gia": null, "reel": "1427116619532041", "nhan": ["Mặt nồi", "Lòng nồi", "Cơm nấu thử"], "diem": "Nồi voi, hâm nóng lại cơm 9 phút", "tinh": "Lòng nồi rất đẹp, không bong tróc, còn bóng loáng.", "phu": "Lòng nồi bóng đẹp"}, {"id": "noi_20", "hang": "Panasonic", "ten": "Panasonic mặt cảm ứng", "co": "1L8", "ma": null, "doi": null, "gia": null, "reel": "1149412070957493", "nhan": ["Mặt nồi", "Nắp trong", "Cơm nấu thử"], "diem": "Chế độ dẻo 51 phút", "tinh": "Hình thức còn đẹp. Xoong có 1 vết chấm nhỏ ở góc.", "phu": "Xoong 1 chấm nhỏ"}];
+var ANH = {"noi_22": ["noi_22.webp", "noi_22_0.webp", "noi_22_1.webp", "noi_22_2.webp"], "noi_03": ["noi_03.webp", "noi_03_0.webp", "noi_03_1.webp", "noi_03_2.webp"], "noi_02": ["noi_02.webp", "noi_02_0.webp", "noi_02_1.webp", "noi_02_2.webp"], "noi_14": ["noi_14.webp", "noi_14_0.webp", "noi_14_1.webp", "noi_14_2.webp"], "noi_15": ["noi_15.webp", "noi_15_0.webp", "noi_15_1.webp", "noi_15_2.webp"], "noi_17": ["noi_17.webp", "noi_17_0.webp", "noi_17_1.webp", "noi_17_2.webp"], "noi_18": ["noi_18.webp", "noi_18_0.webp", "noi_18_1.webp", "noi_18_2.webp"], "noi_16": ["noi_16.webp", "noi_16_0.webp", "noi_16_1.webp", "noi_16_2.webp"], "noi_19": ["noi_19.webp", "noi_19_0.webp", "noi_19_1.webp", "noi_19_2.webp"], "noi_21": ["noi_21.webp", "noi_21_0.webp", "noi_21_1.webp", "noi_21_2.webp"], "noi_20": ["noi_20.webp", "noi_20_0.webp", "noi_20_1.webp", "noi_20_2.webp"]};
+var CLIP = {"noi_22": "noi_22.mp4", "noi_03": "noi_03.mp4", "noi_02": "noi_02.mp4", "noi_14": "noi_14.mp4", "noi_15": "noi_15.mp4", "noi_17": "noi_17.mp4", "noi_18": "noi_18.mp4", "noi_16": "noi_16.mp4", "noi_19": "noi_19.mp4", "noi_21": "noi_21.mp4", "noi_20": "noi_20.mp4"};
+var MES = "https://m.me/61595821257578";
+var loc = { c: "", h: "" };
+var DT = { "1L": "1 lít", "1L8": "1,8 lít" };
+var NHA = { "1L": "Nhà 1–3 người", "1L8": "Nhà 4–6 người" };
+var cuon = 0;
+try { history.scrollRestoration = "manual"; } catch (e) {}
+var ds = document.getElementById("ds"), ct = document.getElementById("ct"), thanh = document.getElementById("thanh");
+
+function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+function theo(id) { return NOI.filter(function (x) { return x.id === id; })[0]; }
+function lenh(p) { return MES + "?text=" + encodeURIComponent("Cho mình hỏi nồi " + p.ten + " còn không ạ?"); }
+
+function ap() {
+  var dem = 0;
+  document.querySelectorAll("#luoi > li").forEach(function (li) {
+    var hien = (!loc.c || li.dataset.c === loc.c) && (!loc.h || li.dataset.h === loc.h);
+    li.hidden = !hien;
+    if (hien) dem++;
+  });
+  document.getElementById("dem").textContent = dem + " nồi";
+  document.getElementById("rong").hidden = dem > 0;
+}
+
+document.querySelectorAll(".loc").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var k = b.dataset.k;
+    if (!k) { loc.c = ""; loc.h = ""; } else { loc[k] = loc[k] === b.dataset.v ? "" : b.dataset.v; }
+    document.querySelectorAll(".loc").forEach(function (x) {
+      var on = x.dataset.k ? loc[x.dataset.k] === x.dataset.v : !loc.c && !loc.h;
+      x.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    ap();
+  });
+});
+
+function hienKhung(p, i) {
+  var k = document.getElementById("khung");
+  k.textContent = "";
+  if (i === 4) {
+    var v = document.createElement("video");
+    v.src = CLIP[p.id]; v.controls = true; v.playsInline = true; v.poster = ANH[p.id][1]; v.setAttribute("preload", "metadata");
+    k.appendChild(v);
+    v.play().catch(function () {});
+  } else {
+    var a = document.createElement("img");
+    a.src = ANH[p.id][i]; a.alt = p.ten + (i ? ": " + p.nhan[i - 1] : "");
+    k.appendChild(a);
+  }
+  document.querySelectorAll("#bi button").forEach(function (b, n) { b.setAttribute("aria-current", n === i ? "true" : "false"); });
+}
+
+function moNoi(id) {
+  var p = theo(id);
+  if (!p) return;
+  if (ct.hidden) cuon = window.scrollY;
+  document.getElementById("sp-hang").textContent = p.hang;
+  document.getElementById("sp-ten").textContent = p.ten;
+  var g = document.getElementById("sp-gia");
+  g.innerHTML = p.gia ? '<p class="gia-to">' + fmt(p.gia) + "đ</p>" : '<p class="gia-to hoi">Nhắn bên em để báo giá chiếc này</p>';
+  var so = [["Dung tích", p.co ? DT[p.co] : "Nhắn để hỏi"], ["Hợp với", p.co ? NHA[p.co] : "Nhắn để hỏi"]];
+  if (p.ma) so.push(["Mã máy", p.ma]);
+  if (p.doi) so.push(["Đời máy", p.doi]);
+  so.push(["Điểm chính", p.diem], ["Số lượng", "Thường chỉ có 1 chiếc"]);
+  var dl = document.getElementById("sp-so");
+  dl.textContent = "";
+  so.forEach(function (r) {
+    var d = document.createElement("div"), t = document.createElement("dt"), v = document.createElement("dd");
+    t.textContent = r[0]; v.textContent = r[1]; d.appendChild(t); d.appendChild(v); dl.appendChild(d);
+  });
+  document.getElementById("sp-tinh").textContent = p.tinh;
+  document.getElementById("sp-tinh-ten").textContent = p.tinh.indexOf("Video") === 0 ? "Trong video có gì" : "Tình trạng chiếc này";
+  document.getElementById("sp-mes").href = lenh(p);
+  document.getElementById("thanh-mes").href = lenh(p);
+  var r = document.getElementById("sp-reel");
+  r.hidden = !p.reel;
+  if (p.reel) r.href = "https://www.facebook.com/reel/" + p.reel + "/";
+
+  var bi = document.getElementById("bi");
+  bi.textContent = "";
+  [0, 1, 2, 3, 4].forEach(function (i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", i === 4 ? "Xem clip" : i ? p.nhan[i - 1] : "Ảnh nồi");
+    var a = document.createElement("img");
+    a.src = ANH[p.id][i === 4 ? 2 : i]; a.alt = "";
+    b.appendChild(a);
+    if (i === 4) b.className = "choi";
+    b.addEventListener("click", function () { hienKhung(p, i); });
+    bi.appendChild(b);
+  });
+  hienKhung(p, 0);
+
+  var keo = document.getElementById("keo");
+  keo.textContent = "";
+  NOI.filter(function (x) { return x.id !== p.id && (!p.co || x.co === p.co); }).slice(0, 6).forEach(function (x) {
+    keo.appendChild(document.querySelector('#luoi > li[data-id="' + x.id + '"]').cloneNode(true));
+  });
+  keo.querySelectorAll("li").forEach(function (li) { li.hidden = false; });
+
+  ds.hidden = true; ct.hidden = false; thanh.hidden = false;
+  document.body.classList.add("co-thanh");
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function veDs() {
+  document.getElementById("khung").textContent = "";
+  ct.hidden = true; thanh.hidden = true; ds.hidden = false;
+  document.body.classList.remove("co-thanh");
+  window.scrollTo({ top: cuon, behavior: "instant" });
+}
+
+function dat(h) {
+  try { history.pushState(null, "", h || location.pathname + location.search); } catch (e) {}
+}
+
+document.addEventListener("click", function (e) {
+  var a = e.target.closest("a.the");
+  if (!a) return;
+  e.preventDefault();
+  moNoi(a.dataset.id);
+  dat("#" + a.dataset.id);
+});
+["ve-ds", "ve-dau"].forEach(function (id) {
+  document.getElementById(id).addEventListener("click", function (e) {
+    e.preventDefault();
+    if (!ct.hidden) { veDs(); dat(""); }
+    else window.scrollTo({ top: 0 });
+  });
+});
+window.addEventListener("popstate", function () {
+  if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
+  else if (!ct.hidden) veDs();
+});
+
+if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
+</script>
+</body></html>
