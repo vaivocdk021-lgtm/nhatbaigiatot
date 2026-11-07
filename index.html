@@ -184,17 +184,21 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
   .luoi { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }
 /* 08/11/2026 hàng nồi tự chạy ngang gần đầu trang (người dùng: "hiện nồi chạy hàng ngang gần đầu trang") */
-.chay-khoi { padding-top: 14px; }
-.chay-khoi h2 { font-size: 16px; margin-bottom: 8px; }
-.chay { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; padding-bottom: 4px; }
+/* 08/11 sửa: hàng chạy nằm GỌN trong khung đỏ bo góc, thẳng mép với danh sách (bản đầu lòi ra 2 mép, ô cụt như lỗi) */
+.chay-khoi { margin-top: 14px; padding-block: 10px 12px; background: var(--do); border-radius: var(--goc); overflow: hidden; }
+.chay-dau { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding-inline: 12px; margin-bottom: 8px; color: #fff; }
+.chay-dau h2 { font-size: 16px; font-weight: 800; }
+.chay-dau span { font-size: 12.5px; opacity: .9; white-space: nowrap; }
+.chay { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-inline: 12px; }
 .chay::-webkit-scrollbar { display: none; }
 .chay li { flex: none; width: 128px; }
-.chay-o { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 8px; background: var(--the); border: 1px solid var(--vach); border-radius: var(--goc); }
+.chay-o { display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 8px; background: #fff; border-radius: 8px; }
+.chay-hang { color: var(--phu); font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
 .chay-o img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; }
 .chay-ten { font-size: 13px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .chay-gia { margin-top: auto; color: var(--do); font-weight: 800; font-size: 15px; font-variant-numeric: tabular-nums; }
 .chay-gia.hoi { font-size: 13px; }
-@media (min-width: 900px) { .chay li { width: 150px; } .chay-khoi { padding-top: 20px; } }
+@media (min-width: 900px) { .chay li { width: 150px; } .chay-khoi { margin-top: 20px; } }
 /* nhãn Mới / Cũ ở góc ảnh (chỉ hiện khi dữ liệu nồi có tt) */
 .tt { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 700; line-height: 1.5; }
 .tt-moi { background: var(--do); color: #fff; }
@@ -226,7 +230,7 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 <main id="dau">
   <section id="ds" class="w">
     <div class="chay-khoi">
-      <h2>Nồi đang bán</h2>
+      <div class="chay-dau"><h2>Nồi đang bán</h2><span>Vuốt để xem thêm ›</span></div>
       <ul class="chay" id="chay" aria-label="Các nồi đang bán, vuốt ngang để xem"></ul>
     </div>
     <div class="dmuc">
@@ -488,7 +492,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
       if (lan) o.setAttribute("aria-hidden", "true");
       o.innerHTML = '<a class="the chay-o" href="#' + id + '" data-id="' + id + '"' + (lan ? ' tabindex="-1"' : "") + '>' +
         '<img src="' + li.querySelector("img").getAttribute("src") + '" alt="" width="128" height="128" loading="lazy" decoding="async">' +
-        '<span class="chay-ten"></span><span class="chay-gia' + (g.classList.contains("hoi") ? " hoi" : "") + '"></span></a>';
+        '<span class="chay-hang">' + li.dataset.h + '</span><span class="chay-ten"></span><span class="chay-gia' + (g.classList.contains("hoi") ? " hoi" : "") + '"></span></a>';
       o.querySelector(".chay-ten").textContent = li.querySelector("h3").textContent;
       o.querySelector(".chay-gia").textContent = g.textContent;
       r.appendChild(o);
