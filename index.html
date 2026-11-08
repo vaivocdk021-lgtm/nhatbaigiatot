@@ -237,6 +237,8 @@ body.co-thanh { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 .cam-vd a { color: var(--do); padding: 2px 10px; border: 1.5px solid var(--do); border-radius: 999px; }
 .cam-vd a:hover { background: var(--do); color: #fff; }
 .cam-vd a:hover svg { color: #fff; }
+/* 08/11 17:1x người dùng: giữ kiểu viên viền đỏ cũ (đẹp hơn), CHỈ dời chỗ: điện thoại xuống dưới dòng địa chỉ, thẳng lề trái */
+@media (max-width: 619px) { .cam-vd { order: 4; margin-left: 0; } }
 #video, #t-ch { scroll-margin-top: 70px; }
 .luoi-video { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
 .luoi-video li { min-width: 0; }
