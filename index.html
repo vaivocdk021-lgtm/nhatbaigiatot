@@ -681,7 +681,9 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   var r = document.getElementById("chay");
   if (!r) return;
   var the = document.querySelectorAll("#luoi > li");
-  [0, 1].forEach(function (lan) {
+  /* 09/11: chỉ còn ít nồi còn hàng (4) -> nhân đôi chưa đủ dài trên màn rộng, chạy 3 giây là chạm cuối rồi đứng.
+     Nhân thêm bộ cho tới khi phần cuộn được dài hơn 1 bộ; chạy vòng theo độ dài 1 bộ (CHU_KY). */
+  function themBo(lan) {
     the.forEach(function (li) {
       if (li.dataset.het) return;   // 09/11: hàng "Nồi đang bán" chỉ lấy nồi còn hàng
       var id = li.dataset.id, g = li.querySelector(".gia");
@@ -695,7 +697,16 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
       o.querySelector(".chay-gia").textContent = g.textContent;
       r.appendChild(o);
     });
-  });
+  }
+  themBo(0);
+  var moiBo = r.children.length;
+  if (!moiBo) return;
+  themBo(1);
+  function chuKy() { return r.children[moiBo].offsetLeft - r.children[0].offsetLeft; }
+  var k = 2;
+  function duDai() { for (; k < 30 && r.scrollWidth - r.clientWidth < chuKy() + 4; k++) themBo(k); }
+  duDai();
+  window.addEventListener("resize", duDai);   // xoay ngang / phóng to cửa sổ: thêm bộ nếu thiếu
   var dung = false, hen = 0, x = 0;
   function nghi() { dung = true; clearTimeout(hen); hen = setTimeout(function () { x = r.scrollLeft; dung = false; }, 1000); }   // 08/11 người dùng: dừng 1 giây rồi chạy tiếp
   /* chuột: cầm kéo ngang; kéo quá 5px thì không tính là bấm mở nồi */
@@ -729,7 +740,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   x = r.scrollLeft;
   function buoc() {
     if (!dung && !document.hidden && !document.getElementById("ds").hidden) {
-      var nua = r.scrollWidth / 2;
+      var nua = chuKy();
       if (Math.abs(r.scrollLeft - x) > 2) x = r.scrollLeft;   // người dùng vừa kéo/vuốt/bấm mũi tên: chạy tiếp từ chỗ đó, không kéo ngược
       x += 0.5;
       if (x >= nua) x -= nua;
