@@ -577,29 +577,8 @@ function moNoi(id) {
   if (ct.hidden) cuon = window.scrollY;
   document.getElementById("sp-hang").textContent = p.hang;
   document.getElementById("sp-ten").textContent = p.ten;
-  var g = document.getElementById("sp-gia");
-  g.innerHTML = p.gia ? '<p class="gia-to">' + fmt(p.gia) + "đ</p>" : '<p class="gia-to hoi">Nhắn bên em để báo giá chiếc này</p>';
-  if (p.het) g.innerHTML += '<p class="sp-het">Mẫu này tạm hết hàng. Thường 15–30 ngày bên em có hàng bù, anh chị nhắn để đặt trước.</p>';
-  var so = [["Dung tích", p.co ? DT[p.co] : "Nhắn để hỏi"], ["Hợp với", p.co ? NHA[p.co] : "Nhắn để hỏi"]];
-  if (p.dien) so.push(["Điện áp", p.dien == "220V" ? "220V, cắm thẳng điện nhà mình" : p.dien + ", cần cục đổi nguồn"]);
-  if (p.ma) so.push(["Mã máy", p.ma]);
-  if (p.doi) so.push(["Đời máy", p.doi]);
-  if (p.diem) so.push(["Điểm chính", p.diem]);
-  so.push(["Số lượng", "Thường chỉ có 1 chiếc"]);
-  var dl = document.getElementById("sp-so");
-  dl.textContent = "";
-  so.forEach(function (r) {
-    var d = document.createElement("div"), t = document.createElement("dt"), v = document.createElement("dd");
-    t.textContent = r[0]; v.textContent = r[1]; d.appendChild(t); d.appendChild(v); dl.appendChild(d);
-  });
-  document.getElementById("sp-tinh").textContent = p.tinh || "";
-  document.getElementById("sp-tinh-ten").textContent = "Tình trạng chiếc này";
-  document.getElementById("sp-tinh").parentNode.hidden = !p.tinh;   // 09/11: không biết tình trạng thì ẩn ô
-  document.getElementById("sp-mes").href = lenh(p);
-  document.getElementById("thanh-mes").href = lenh(p);
-  var r = document.getElementById("sp-reel");
-  r.hidden = !p.reel;
-  if (p.reel) r.href = "https://www.facebook.com/reel/" + p.reel + "/";
+  dangMo = p.id;
+  tinCt(p);
 
   var bi = document.getElementById("bi");
   bi.textContent = "";
@@ -626,6 +605,34 @@ function moNoi(id) {
   ds.hidden = true; ct.hidden = false; thanh.hidden = false;
   document.body.classList.add("co-thanh");
   window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+/* phần chữ trang 1 nồi phụ thuộc bảng giá (giá, hết hàng, điện áp...): tách riêng để bảng Google tải xong thì vẽ lại mà không cuộn trang */
+var dangMo = null;
+function tinCt(p) {
+  var g = document.getElementById("sp-gia");
+  g.innerHTML = p.gia ? '<p class="gia-to">' + fmt(p.gia) + "đ</p>" : '<p class="gia-to hoi">Nhắn bên em để báo giá chiếc này</p>';
+  if (p.het) g.innerHTML += '<p class="sp-het">Mẫu này tạm hết hàng. Thường 15–30 ngày bên em có hàng bù, anh chị nhắn để đặt trước.</p>';
+  var so = [["Dung tích", p.co ? DT[p.co] : "Nhắn để hỏi"], ["Hợp với", p.co ? NHA[p.co] : "Nhắn để hỏi"]];
+  if (p.dien) so.push(["Điện áp", p.dien == "220V" ? "220V, cắm thẳng điện nhà mình" : p.dien + ", cần cục đổi nguồn"]);
+  if (p.ma) so.push(["Mã máy", p.ma]);
+  if (p.doi) so.push(["Đời máy", p.doi]);
+  if (p.diem) so.push(["Điểm chính", p.diem]);
+  so.push(["Số lượng", "Thường chỉ có 1 chiếc"]);
+  var dl = document.getElementById("sp-so");
+  dl.textContent = "";
+  so.forEach(function (r) {
+    var d = document.createElement("div"), t = document.createElement("dt"), v = document.createElement("dd");
+    t.textContent = r[0]; v.textContent = r[1]; d.appendChild(t); d.appendChild(v); dl.appendChild(d);
+  });
+  document.getElementById("sp-tinh").textContent = p.tinh || "";
+  document.getElementById("sp-tinh-ten").textContent = "Tình trạng chiếc này";
+  document.getElementById("sp-tinh").parentNode.hidden = !p.tinh;   // 09/11: không biết tình trạng thì ẩn ô
+  document.getElementById("sp-mes").href = lenh(p);
+  document.getElementById("thanh-mes").href = lenh(p);
+  var r = document.getElementById("sp-reel");
+  r.hidden = !p.reel;
+  if (p.reel) r.href = "https://www.facebook.com/reel/" + p.reel + "/";
 }
 
 function veDs() {
@@ -759,7 +766,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   }
   daDo = doCo();
   function buocO() { return r.children[0] ? r.children[0].getBoundingClientRect().width + (parseFloat(getComputedStyle(r).columnGap) || 10) : 200; }
-  var the = document.querySelectorAll("#luoi > li");
+  var the = [];
   /* 09/11: chỉ còn ít nồi còn hàng (4) -> nhân đôi chưa đủ dài trên màn rộng, chạy 3 giây là chạm cuối rồi đứng.
      Nhân thêm bộ cho tới khi phần cuộn được dài hơn 1 bộ; chạy vòng theo độ dài 1 bộ (CHU_KY). */
   function themBo(lan) {
@@ -776,14 +783,19 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
       r.appendChild(o);
     });
   }
-  themBo(0);
-  var moiBo = r.children.length;
-  if (!moiBo) return;
-  themBo(1);
-  function chuKy() { return r.children[moiBo].offsetLeft - r.children[0].offsetLeft; }
-  var k = 2;
-  function duDai() { for (; k < 30 && r.scrollWidth - r.clientWidth < chuKy() + 4; k++) themBo(k); }
-  duDai();
+  /* 10/11 tối: web tự đọc bảng giá Google lúc mở trang -> giá / Còn-Hết đổi thì dựng lại hàng chạy từ lưới (lamLaiHangChay) */
+  var moiBo = 0, k = 2;
+  function chuKy() { return moiBo && r.children[moiBo] ? r.children[moiBo].offsetLeft - r.children[0].offsetLeft : 1; }
+  function duDai() { if (!moiBo) return; for (; k < 30 && r.scrollWidth - r.clientWidth < chuKy() + 4; k++) themBo(k); }
+  function dungHang() {
+    r.textContent = ""; the = document.querySelectorAll("#luoi > li");
+    themBo(0); moiBo = r.children.length;
+    r.parentNode.hidden = !moiBo;   // không còn nồi nào còn hàng thì ẩn cả khung
+    if (!moiBo) return;
+    themBo(1); k = 2; duDai();
+  }
+  dungHang();
+  window.lamLaiHangChay = function () { dungHang(); r.scrollLeft = 0; x = 0; };
   window.addEventListener("resize", function () { daDo = doCo() || daDo; duDai(); });   // xoay ngang / phóng to cửa sổ: ô theo cột lưới mới, thêm bộ nếu thiếu
   var dung = false, hen = 0, x = 0;
   function nghi() { dung = true; clearTimeout(hen); hen = setTimeout(function () { x = r.scrollLeft; dung = false; }, 1000); }   // 08/11 người dùng: dừng 1 giây rồi chạy tiếp
@@ -817,7 +829,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   khung.addEventListener("mouseleave", function () { if (!keo) { clearTimeout(hen); x = r.scrollLeft; dung = false; } });   // 08/11 người dùng: bỏ chuột ra là chạy ngay
   x = r.scrollLeft;
   function buoc() {
-    if (!dung && !document.hidden && !document.getElementById("ds").hidden) {
+    if (moiBo && !dung && !document.hidden && !document.getElementById("ds").hidden) {
       if (!daDo && (daDo = doCo())) duDai();
       var nua = chuKy();
       if (Math.abs(r.scrollLeft - x) > 2) x = r.scrollLeft;   // người dùng vừa kéo/vuốt/bấm mũi tên: chạy tiếp từ chỗ đó, không kéo ngược
@@ -828,6 +840,79 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
     requestAnimationFrame(buoc);
   }
   requestAnimationFrame(buoc);
+})();
+
+/* 10/11 tối (người dùng duyệt): web TỰ ĐỌC bảng giá Google (Hiếu sửa, bản xuất bản CSV) mỗi lần mở trang -> Giá, Mới/Cũ, Còn/Hết, Điện áp
+   đổi theo bảng cho ô lưới + hàng chạy + trang từng nồi, không cần Claude dựng lại. Tải lỗi / quá 8 giây / bảng hỏng thì GIỮ giá đã dựng sẵn
+   (lam_web.py đọc bang_gia.csv lúc dựng). Cột bảng: 0 Mã, 2 Giá, 3 Mới hay Cũ, 4 Còn hay Hết, 5 Điện áp.
+   Dòng nồi có trong bảng mà web chưa có (chưa có ảnh) thì bỏ qua, ghi console. */
+(function () {
+  var BANG = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQem2t39YE2E5C8NKKjbTIAHpEfWI4HnvN3hhz74kQK3QCVZZXfwwvsk8O2oHgcm85dR0zUxaTtsH5t/pub?output=csv";
+  function docCsv(s) {
+    var hang = [], o = [], f = "", q = false;
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (q) {
+        if (c === '"') { if (s[i + 1] === '"') { f += '"'; i++; } else q = false; }
+        else f += c;
+      } else if (c === '"') q = true;
+      else if (c === ",") { o.push(f); f = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && s[i + 1] === "\n") i++; o.push(f); hang.push(o); o = []; f = ""; }
+      else f += c;
+    }
+    if (f || o.length) { o.push(f); hang.push(o); }
+    return hang;
+  }
+  /* vẽ lại 1 ô lưới đúng như lam_web.py dựng (nhãn Mới/Cũ, Tạm hết, điện áp, giá, nút Hỏi mua / Đặt trước) */
+  function suaO(li, p) {
+    li.classList.toggle("het", !!p.het);
+    if (p.het) li.setAttribute("data-het", "1"); else li.removeAttribute("data-het");
+    li.setAttribute("data-tt", p.tt || "");
+    var ka = li.querySelector(".khung-anh");
+    ka.querySelectorAll(".tt, .nhan-het").forEach(function (x) { x.remove(); });
+    if (p.het) ka.insertAdjacentHTML("afterbegin", '<span class="nhan-het">Tạm hết hàng</span>');
+    if (p.tt) ka.insertAdjacentHTML("afterbegin", '<span class="tt tt-' + (p.tt === "Mới" ? "moi" : "cu") + '">' + p.tt + "</span>");
+    var nd = li.querySelector(".nd"), dn = nd.querySelector(".dien");
+    if (dn) dn.remove();
+    if (p.dien) nd.querySelector("h3").insertAdjacentHTML("afterend", p.dien === "220V" ? '<p class="dien dien-220">⚡ 220V cắm thẳng</p>' : '<p class="dien">🔌 ' + p.dien + " cần đổi nguồn</p>");
+    nd.querySelectorAll(".gia, .het-chu").forEach(function (x) { x.remove(); });
+    nd.insertAdjacentHTML("beforeend", p.gia ? '<p class="gia">' + fmt(p.gia) + "đ</p>" : '<p class="gia hoi">Nhắn báo giá</p>');
+    if (p.het) nd.insertAdjacentHTML("beforeend", '<p class="het-chu">Tạm hết · 15–30 ngày có hàng bù</p>');
+    var m = li.querySelector(".mua");
+    if (m) { m.textContent = p.het ? "Đặt trước" : "Hỏi mua"; m.href = lenh(p); }
+  }
+  function apBang(hang) {
+    var ds = hang.filter(function (r) { return r.length >= 6 && /^noi_\d+$/.test((r[0] || "").trim()); });
+    if (!ds.length) { console.warn("Bảng giá: không đọc được dòng nồi nào, giữ giá đã dựng sẵn"); return; }
+    var bo = [], doi = 0;
+    ds.forEach(function (r) {
+      var id = r[0].trim(), p = theo(id), li = document.querySelector('#luoi > li[data-id="' + id + '"]');
+      if (!p || !li) { bo.push(id); return; }
+      var so = r[2].replace(/\D/g, ""), tt = r[3].trim(), dien = r[5].trim();
+      var moi = { gia: so ? parseInt(so, 10) : null, tt: (tt === "Mới" || tt === "Cũ") ? tt : null, het: r[4].trim() === "Hết",
+                  dien: /^(220V|110V|100V)$/.test(dien) ? dien : (p.dien || null) };
+      if (moi.gia === (p.gia || null) && moi.tt === (p.tt || null) && moi.het === !!p.het && moi.dien === (p.dien || null)) return;
+      p.gia = moi.gia; p.tt = moi.tt; p.het = moi.het; p.dien = moi.dien; doi++;
+      suaO(li, p);
+    });
+    if (bo.length) console.info("Bảng giá: bỏ qua nồi chưa có trên web:", bo.join(", "));
+    window.BANG_GIA_DOC = { luc: new Date().toISOString(), dong: ds.length, doi: doi, bo: bo };   // để kiểm (kiem_web / người xem console)
+    if (!doi) return;
+    var luoi = document.getElementById("luoi"), cac = [].slice.call(luoi.children);
+    cac.filter(function (li) { return !li.dataset.het; }).concat(cac.filter(function (li) { return li.dataset.het; })).forEach(function (li) { luoi.appendChild(li); });
+    NOI.sort(function (a, b) { return (a.het ? 1 : 0) - (b.het ? 1 : 0); });   // còn hàng trước, giữ thứ tự cũ trong từng nhóm
+    ap();
+    if (window.lamLaiHangChay) window.lamLaiHangChay();
+    if (dangMo && !ct.hidden) tinCt(theo(dangMo));
+    console.info("Bảng giá: đã cập nhật", doi, "nồi theo bảng Google");
+  }
+  if (!window.fetch) return;
+  var ctl = window.AbortController ? new AbortController() : null;
+  var hen = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
+  fetch(BANG + "&t=" + Date.now(), { cache: "no-store", signal: ctl ? ctl.signal : undefined })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(function (s) { clearTimeout(hen); apBang(docCsv(s)); })
+    .catch(function (e) { clearTimeout(hen); window.BANG_GIA_DOC = { loi: String(e && e.message || e) }; console.warn("Bảng giá: không tải được, giữ giá đã dựng sẵn:", e && e.message); });
 })();
 </script>
 </body></html>
