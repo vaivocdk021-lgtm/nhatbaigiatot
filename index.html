@@ -305,10 +305,25 @@ body.co-thanh .hotline { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); 
 .o.het .mua { background: #fff; color: var(--do); box-shadow: inset 0 0 0 1.5px var(--do); }
 .sp-het { margin-top: 6px; padding: 8px 10px; border-radius: 8px; background: #FFF3E6; color: #8A3D0F; font-size: 14px; font-weight: 600; line-height: 1.45; }
 /* 10/11 mục Phụ kiện nồi cơm: cùng kiểu ô với lưới nồi; bấm ảnh xem lớn */
-#phu-kien { scroll-margin-top: 70px; padding-top: 16px; }
-/* 10/11 17:26 phụ kiện lên đầu trang: hàng "Nồi đang bán" nằm ngay dưới lưới phụ kiện, cách ra cho rõ 2 phần */
-#phu-kien + .chay-khoi { margin-top: 24px; }
-@media (min-width: 900px) { #phu-kien { padding-top: 20px; } #phu-kien + .chay-khoi { margin-top: 28px; } }
+#phu-kien { scroll-margin-top: 70px; padding-top: 14px; }
+#phu-kien + .dmuc { margin-top: 12px; }
+/* 10/11 17:55 Hiếu lần 2: hàng "Nồi đang bán" lên TRÊN CÙNG và THU NHỎ (ô ngang: ảnh nhỏ trái, hãng + tên + giá phải),
+   để máy tính 1366x768 màn đầu thấy cả hàng chạy lẫn trọn hàng phụ kiện */
+.chay-khoi { margin-top: 12px; padding-block: 7px 8px; }
+.chay-dau { margin-bottom: 6px; }
+.chay-dau h2 { font-size: 14.5px; }
+.xem-het { font-size: 12px; padding: 2px 9px; }
+.chay li { width: 192px; }
+.chay-o { flex-direction: row; align-items: center; gap: 8px; padding: 6px 8px 6px 6px; }
+.chay-o img { flex: none; width: 56px; height: 56px; }
+.chay-chu { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.chay-hang { font-size: 10px; }
+.chay-ten { font-size: 12px; line-height: 1.25; }
+.chay-gia { margin-top: 1px; font-size: 13.5px; }
+.chay-gia.hoi { font-size: 12px; }
+.chay-o .dien { font-size: 10.5px; padding: 0 5px; }
+.chay-mui { width: 30px; height: 30px; font-size: 20px; margin-top: -4px; }
+@media (min-width: 900px) { .chay li { width: 206px; } .chay-khoi { margin-top: 12px; } #phu-kien { padding-top: 16px; } }
 .pk-dau { display: grid; gap: 4px; margin-bottom: 12px; }
 .pk-dau h2 { font-size: 21px; letter-spacing: -.01em; }
 .pk-dau .dmuc-tren { align-items: baseline; }
@@ -355,7 +370,14 @@ button.pk-anh { display: block; width: 100%; padding: 0; border: 0; cursor: zoom
 
 <main id="dau">
   <section id="ds" class="w">
-    <!-- 10/11 17:26 Hiếu: phụ kiện (nắp vung) lên ĐẦU trang, bán chủ lực; nồi xuống dưới, hàng nồi chạy giữ nguyên -->
+    <!-- 10/11 17:55 Hiếu lần 2: hàng "Nồi đang bán" chạy NHỎ GỌN trên cùng, phụ kiện ngay dưới, rồi lưới nồi -->
+    <div class="chay-khoi">
+      <div class="chay-dau"><h2>Nồi đang bán</h2><a class="xem-het" id="xem-het" href="#tat-ca">Xem tất cả nồi ›</a></div>
+      <button class="chay-mui trai" id="chay-trai" type="button" aria-label="Xem nồi phía trước">‹</button>
+      <button class="chay-mui phai" id="chay-phai" type="button" aria-label="Xem nồi tiếp theo">›</button>
+      <ul class="chay" id="chay" aria-label="Các nồi đang bán, vuốt ngang để xem"></ul>
+    </div>
+
     <section id="phu-kien" aria-labelledby="t-pk">
       <div class="pk-dau">
         <div class="dmuc-tren"><h2 id="t-pk">Phụ kiện nồi cơm</h2><p class="dem">5 món</p></div>
@@ -364,12 +386,6 @@ button.pk-anh { display: block; width: 100%; padding: 0; border: 0; cursor: zoom
       <ul class="luoi" id="luoi-pk"><li class="o o-pk" data-id="pk_01"><div class="the"><button class="khung-anh pk-anh" type="button" data-to="pk_01.jpg" aria-label="Xem ảnh lớn: Nắp vung trong nồi National / Panasonic có cốc nước bù ẩm (đời 2010, 2011)"><img src="pk_01.jpg" alt="Nắp vung trong nồi National / Panasonic có cốc nước bù ẩm (đời 2010, 2011)" width="800" height="800" loading="eager" decoding="async"></button><div class="nd"><p class="hang">National / Panasonic</p><h3>Nắp vung trong nồi National / Panasonic có cốc nước bù ẩm (đời 2010, 2011)</h3><p class="gia">80.000đ</p></div></div><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20N%E1%BA%AFp%20vung%20trong%20n%E1%BB%93i%20National%20/%20Panasonic%20c%C3%B3%20c%E1%BB%91c%20n%C6%B0%E1%BB%9Bc%20b%C3%B9%20%E1%BA%A9m%20%28%C4%91%E1%BB%9Di%202010%2C%202011%29%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o o-pk" data-id="pk_02"><div class="the"><button class="khung-anh pk-anh" type="button" data-to="pk_02.jpg" aria-label="Xem ảnh lớn: Nắp vung trong nồi Tiger 1L"><img src="pk_02.jpg" alt="Nắp vung trong nồi Tiger 1L" width="800" height="800" loading="eager" decoding="async"></button><div class="nd"><p class="hang">Tiger</p><h3>Nắp vung trong nồi Tiger 1L</h3><p class="gia">80.000đ</p></div></div><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20N%E1%BA%AFp%20vung%20trong%20n%E1%BB%93i%20Tiger%201L%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o o-pk" data-id="pk_03"><div class="the"><button class="khung-anh pk-anh" type="button" data-to="pk_03.jpg" aria-label="Xem ảnh lớn: Nắp vung trong nồi Tiger tacook 1L"><img src="pk_03.jpg" alt="Nắp vung trong nồi Tiger tacook 1L" width="800" height="800" loading="eager" decoding="async"></button><div class="nd"><p class="hang">Tiger</p><h3>Nắp vung trong nồi Tiger tacook 1L</h3><p class="gia">80.000đ</p></div></div><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20N%E1%BA%AFp%20vung%20trong%20n%E1%BB%93i%20Tiger%20tacook%201L%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o o-pk" data-id="pk_04"><div class="the"><button class="khung-anh pk-anh" type="button" data-to="pk_04.jpg" aria-label="Xem ảnh lớn: Nắp vung trong nồi Zojirushi (voi) 0,54L, có loại nhôm và loại inox"><img src="pk_04.jpg" alt="Nắp vung trong nồi Zojirushi (voi) 0,54L, có loại nhôm và loại inox" width="800" height="800" loading="eager" decoding="async"></button><div class="nd"><p class="hang">Zojirushi</p><h3>Nắp vung trong nồi Zojirushi (voi) 0,54L, có loại nhôm và loại inox</h3><p class="gia">80.000đ <span class="dv">/ cái</span></p></div></div><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20N%E1%BA%AFp%20vung%20trong%20n%E1%BB%93i%20Zojirushi%20%28voi%29%200%2C54L%2C%20c%C3%B3%20lo%E1%BA%A1i%20nh%C3%B4m%20v%C3%A0%20lo%E1%BA%A1i%20inox%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li><li class="o o-pk" data-id="pk_05"><div class="the"><button class="khung-anh pk-anh" type="button" data-to="pk_05.jpg" aria-label="Xem ảnh lớn: Nắp vung trong nồi Zojirushi (voi) 1L"><img src="pk_05.jpg" alt="Nắp vung trong nồi Zojirushi (voi) 1L" width="800" height="800" loading="eager" decoding="async"></button><div class="nd"><p class="hang">Zojirushi</p><h3>Nắp vung trong nồi Zojirushi (voi) 1L</h3><p class="gia">80.000đ</p></div></div><a class="mua" href="https://m.me/61595821257578?text=Cho%20m%C3%ACnh%20h%E1%BB%8Fi%20N%E1%BA%AFp%20vung%20trong%20n%E1%BB%93i%20Zojirushi%20%28voi%29%201L%20c%C3%B2n%20kh%C3%B4ng%20%E1%BA%A1%3F" target="_blank" rel="noopener">Hỏi mua</a></li></ul>
     </section>
 
-    <div class="chay-khoi">
-      <div class="chay-dau"><h2>Nồi đang bán</h2><a class="xem-het" id="xem-het" href="#tat-ca">Xem tất cả nồi ›</a></div>
-      <button class="chay-mui trai" id="chay-trai" type="button" aria-label="Xem nồi phía trước">‹</button>
-      <button class="chay-mui phai" id="chay-phai" type="button" aria-label="Xem nồi tiếp theo">›</button>
-      <ul class="chay" id="chay" aria-label="Các nồi đang bán, vuốt ngang để xem"></ul>
-    </div>
     <div class="dmuc" id="tat-ca">
       <div class="dmuc-tren">
         <h1>Nồi cơm Nhật bãi</h1>
@@ -738,6 +754,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
 (function () {
   var r = document.getElementById("chay");
   if (!r) return;
+  var BUOC_O = 200;   // 10/11 17:55 ô thu nhỏ dạng ngang (192/206px + khe 8) -> mũi tên trượt 3 ô
   var the = document.querySelectorAll("#luoi > li");
   /* 09/11: chỉ còn ít nồi còn hàng (4) -> nhân đôi chưa đủ dài trên màn rộng, chạy 3 giây là chạm cuối rồi đứng.
      Nhân thêm bộ cho tới khi phần cuộn được dài hơn 1 bộ; chạy vòng theo độ dài 1 bộ (CHU_KY). */
@@ -749,9 +766,10 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
       if (lan) o.setAttribute("aria-hidden", "true");
       o.innerHTML = '<a class="the chay-o" href="#' + id + '" data-id="' + id + '"' + (lan ? ' tabindex="-1"' : "") + '>' +
         '<img src="' + li.querySelector("img").getAttribute("src") + '" alt="" width="128" height="128" loading="lazy" decoding="async">' +
-        '<span class="chay-hang">' + li.dataset.h + '</span><span class="chay-ten"></span><span class="chay-gia' + (g.classList.contains("hoi") ? " hoi" : "") + '"></span></a>';
+        '<span class="chay-chu"><span class="chay-hang">' + li.dataset.h + '</span><span class="chay-ten"></span><span class="chay-gia' + (g.classList.contains("hoi") ? " hoi" : "") + '"></span></span></a>';
       o.querySelector(".chay-ten").textContent = li.querySelector("h3").textContent;
-      var dn = li.querySelector(".dien"); if (dn) o.querySelector(".chay-ten").after(dn.cloneNode(true));
+      var dn = li.querySelector(".dien");
+      if (dn) { dn = dn.cloneNode(true); dn.textContent = dn.textContent.replace("cần đổi nguồn", "đổi nguồn"); o.querySelector(".chay-ten").after(dn); }   // 10/11 ô nhỏ: chữ ngắn cho khỏi bị cắt "..."
       o.querySelector(".chay-gia").textContent = g.textContent;
       r.appendChild(o);
     });
@@ -788,7 +806,7 @@ if (/^#noi_\d+$/.test(location.hash)) moNoi(location.hash.slice(1));
   /* nút mũi tên: trượt 3 ô */
   [["chay-trai", -1], ["chay-phai", 1]].forEach(function (n) {
     var b = document.getElementById(n[0]);
-    if (b) b.addEventListener("click", function () { nghi(); r.scrollBy({ left: n[1] * 3 * 158, behavior: "smooth" }); });
+    if (b) b.addEventListener("click", function () { nghi(); r.scrollBy({ left: n[1] * 3 * BUOC_O, behavior: "smooth" }); });
   });
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var khung = r.parentNode;   // dừng khi chuột ở cả khung (kể cả nút mũi tên), không chỉ hàng
